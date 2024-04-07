@@ -1,0 +1,43 @@
+server:
+  port: ${SERVER_PORT:0}
+  shutdown: graceful
+spring:
+  application:
+    name: ${APP_NAME:grocery-payment}
+  profiles:
+    active: ${ENV:dev}
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3000/grocery_payment
+    username: root
+    password: nmtkma0550
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: false
+    properties:
+      format_sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/grocery-realm
+          jwk-set-uri: http://localhost:8180/realms/grocery-realm/protocol/openid-connect/certs
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+stripe:
+  version: ${STRIPE_VERSION:2023-10-16}
+  api-key: ${STRIPE_API_KEY:sk_test_51OMRX8Cqjm2Ob9Uw0snWeJlSrbRxXA1kz1ICJnu688GNYnYNFmJJFna52Ji7oejulOW0R7qxhR6xJZ3PlViQ11wu00Vm2Xabrb}
+  publishable-key: ${STRIPE_PUBLISHABLE_KEY:pk_test_51OMRX8Cqjm2Ob9UwwghwmRpeG1BLJSyPh9Clgi80F5sen4yBWswDbFsoK60ah7YfyXz5uZVAzR3beZkRh9pzVX8Y00kXvzKxSc}
+
+grocery:
+  client-uri:
+    grocery-cart: ${GROCERY_CART:http://grocery-cart/api/internal/cart}
+    grocery-product: ${GROCERY_PRODUCT:http://grocery-product/api/internal/product}

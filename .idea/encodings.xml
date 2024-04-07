@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/api-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-discovery-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-authorization/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-bill/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-cart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-common/grocery-base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-common/grocery-base/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-common/grocery-security/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-common/grocery-utils/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-payment/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-product/src/main/java" charset="UTF-8" />
+  </component>
+</project>

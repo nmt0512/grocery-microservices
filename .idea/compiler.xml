@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="grocery-cart" />
+        <module name="grocery-payment" />
+        <module name="grocery-product" />
+        <module name="grocery-auth" />
+        <module name="eureka-discovery-server" />
+        <module name="api-gateway" />
+        <module name="grocery-security" />
+        <module name="grocery-utils" />
+        <module name="grocery-base" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="grocery-authorization" target="17" />
+      <module name="grocery-bill" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="eureka-discovery-server" options="-parameters" />
+      <module name="grocery-auth" options="-parameters" />
+      <module name="grocery-authorization" options="-parameters" />
+      <module name="grocery-base" options="-parameters" />
+      <module name="grocery-bill" options="-parameters" />
+      <module name="grocery-cart" options="-parameters" />
+      <module name="grocery-payment" options="-parameters" />
+      <module name="grocery-product" options="-parameters" />
+      <module name="grocery-security" options="-parameters" />
+      <module name="grocery-utils" options="-parameters" />
+    </option>
+  </component>
+</project>
