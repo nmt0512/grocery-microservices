@@ -1,5 +1,6 @@
 package com.thieunm.grocerypayment.handler.bill;
 
+import com.corundumstudio.socketio.SocketIOServer;
 import com.thieunm.grocerybase.cqrs.command.CommandHandler;
 import com.thieunm.grocerypayment.client.cart.ICartClient;
 import com.thieunm.grocerypayment.client.cart.dto.request.DeleteAndGetCartByIdListClientRequest;
@@ -20,12 +21,14 @@ import com.thieunm.grocerypayment.repository.BillRepository;
 import com.thieunm.groceryutils.JsonWebTokenUtil;
 import com.thieunm.groceryutils.Mapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,6 +39,9 @@ public class CreateBillHandler extends CommandHandler<CreateBillRequest, CreateB
     private final BillRepository billRepository;
     private final ICartClient cartClient;
     private final IProductClient productClient;
+
+    private final ThreadPoolTaskScheduler taskScheduler;
+    private final SocketIOServer socketIOServer;
 
     @Override
     @Transactional
@@ -84,6 +90,9 @@ public class CreateBillHandler extends CommandHandler<CreateBillRequest, CreateB
         // SAVE bill
         Bill savedBill = billRepository.save(bill);
 
+        // SCHEDULE SENDING SOCKET NOTIFICATION to Staff App
+        sendSocketNotification(savedBill);
+
         // CREATE bill response
         List<BillItemResponse> billItemResponseList = Mapper.mapList(savedBill.getBillItemList(), BillItemResponse.class);
         BillResponse billResponse = Mapper.map(savedBill, BillResponse.class);
@@ -105,5 +114,16 @@ public class CreateBillHandler extends CommandHandler<CreateBillRequest, CreateB
         LocalTime pickUpTime = LocalTime.of(pickUpHour, pickUpMinute);
 
         return LocalDateTime.of(pickUpDate, pickUpTime);
+    }
+
+    private void sendSocketNotification(Bill bill) {
+//        boolean isPickUpTimeToday = bill.getPickUpTime().toLocalDate().equals(LocalDate.now());
+//        if (isPickUpTimeToday) {
+            socketIOServer.getBroadcastOperations().sendEvent("todayNewBill", bill.getId());
+//        }
+        taskScheduler.schedule(
+                () -> socketIOServer.getBroadcastOperations().sendEvent("incomingPickUpBill", bill.getId()),
+                bill.getPickUpTime().minusMinutes(90).atZone(ZoneId.systemDefault()).toInstant()
+        );
     }
 }

@@ -8,7 +8,7 @@ import com.stripe.param.CustomerCreateParams;
 import com.stripe.param.EphemeralKeyCreateParams;
 import com.stripe.param.PaymentIntentCreateParams;
 import com.thieunm.grocerybase.cqrs.command.CommandHandler;
-import com.thieunm.grocerypayment.config.StripeProperties;
+import com.thieunm.grocerypayment.config.properties.StripeProperties;
 import com.thieunm.grocerypayment.dto.request.stripe_customer.StripeConfirmPaymentRequest;
 import com.thieunm.grocerypayment.dto.response.stripe_customer.StripeConfirmPaymentResponse;
 import com.thieunm.grocerypayment.entity.StripeCustomer;

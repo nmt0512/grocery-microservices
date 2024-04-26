@@ -22,9 +22,7 @@ public class SecurityConfig {
                                 "/api/cart/**",
                                 "/api/payment/**"
                         ).hasRole("CUSTOMER")
-                        .requestMatchers(
-                                "/api/bill", "/api/bill/**"
-                        ).hasAnyRole("CUSTOMER", "STAFF")
+                        .requestMatchers("/api/bill/**").hasAnyRole("CUSTOMER", "STAFF")
                         .requestMatchers("/api/staff").hasRole("STAFF")
                         .anyRequest()
                         .permitAll()

@@ -8,7 +8,6 @@ import com.thieunm.groceryproduct.entity.Product;
 import com.thieunm.groceryproduct.repository.ProductRepository;
 import com.thieunm.groceryproduct.utils.ProductUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +22,7 @@ public class GetProductByCategoryIdPagingHandler extends PageSupportQueryHandler
 
     @Override
     public PageSupport<ProductResponse> handle(GetProductByCategoryIdPagingRequest requestData) {
-        int pageIndex = requestData.getPageNumber() - 1;
-        Pageable pageable = PageRequest.of(pageIndex, requestData.getPageSize());
+        Pageable pageable = requestData.getPageable();
         List<Product> productList = productRepository.findByCategoryId(requestData.getCategoryId(), pageable);
         List<ProductResponse> productResponseList = productList
                 .stream()
@@ -32,8 +30,8 @@ public class GetProductByCategoryIdPagingHandler extends PageSupportQueryHandler
                 .toList();
         return new PageSupport<>(
                 productResponseList,
-                requestData.getPageNumber(),
-                requestData.getPageSize(),
+                pageable.getPageNumber() + 1,
+                pageable.getPageSize(),
                 productResponseList.size()
         );
     }

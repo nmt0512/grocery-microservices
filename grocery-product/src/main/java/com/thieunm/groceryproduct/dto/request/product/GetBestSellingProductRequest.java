@@ -9,7 +9,5 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-@AllArgsConstructor
-public class GetProductByCategoryIdPagingRequest extends QueryRequestData {
-    private Integer categoryId;
+public class GetBestSellingProductRequest extends QueryRequestData {
 }

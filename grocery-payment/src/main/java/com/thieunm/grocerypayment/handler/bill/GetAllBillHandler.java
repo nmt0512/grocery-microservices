@@ -33,22 +33,26 @@ public class GetAllBillHandler extends QueryHandler<GetAllBillRequest, GetAllBil
                 .stream()
                 .anyMatch(role -> role.equals(AccountRoles.CUSTOMER));
         List<Bill> billList;
+        int pageIndex = requestData.getPageNumber() - 1;
         if (isCustomerRole) {
-            Sort createdDateDescSort = Sort.by(Sort.Direction.DESC, "createdDate");
+            Pageable pageable = PageRequest.of(
+                    pageIndex,
+                    requestData.getPageSize(),
+                    Sort.by(Sort.Direction.DESC, "createdDate")
+            );
             billList = requestData.getBillStatusList() == null
                     ?
-                    billRepository.findByCustomerId(userId, createdDateDescSort)
+                    billRepository.findByCustomerId(userId, pageable)
                     :
-                    billRepository.findByCustomerIdAndStatusIn(userId, requestData.getBillStatusList(), createdDateDescSort);
+                    billRepository.findByCustomerIdAndStatusIn(userId, requestData.getBillStatusList(), pageable);
 
             List<BillResponse> billResponseList = billUtil.mapBillListToBillResponseList(billList);
             return new GetAllBillResponse(billResponseList);
         } else {
-            int pageIndex = requestData.getPageNumber() - 1;
             Pageable pageable = PageRequest.of(
                     pageIndex,
                     requestData.getPageSize(),
-                    Sort.by("pickUpTime").ascending()
+                    Sort.by(Sort.Direction.ASC, "pickUpTime")
             );
             billList = billRepository.findByStatusIn(requestData.getBillStatusList(), pageable);
         }

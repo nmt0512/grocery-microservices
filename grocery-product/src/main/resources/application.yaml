@@ -36,3 +36,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+
+grocery:
+  client-uri:
+    grocery-payment: ${GROCERY_PAYMENT:http://grocery-payment/api/internal/bill}

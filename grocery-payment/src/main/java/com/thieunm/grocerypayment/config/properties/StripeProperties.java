@@ -1,4 +1,4 @@
-package com.thieunm.grocerypayment.config;
+package com.thieunm.grocerypayment.config.properties;
 
 import lombok.Getter;
 import lombok.Setter;

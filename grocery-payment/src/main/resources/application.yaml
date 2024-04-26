@@ -26,6 +26,9 @@ spring:
         jwt:
           issuer-uri: http://localhost:8180/realms/grocery-realm
           jwk-set-uri: http://localhost:8180/realms/grocery-realm/protocol/openid-connect/certs
+  scheduler:
+    pool-size: 30
+    thread-name-prefix: ThreadScheduler-
 
 eureka:
   client:
@@ -41,3 +44,13 @@ grocery:
   client-uri:
     grocery-cart: ${GROCERY_CART:http://grocery-cart/api/internal/cart}
     grocery-product: ${GROCERY_PRODUCT:http://grocery-product/api/internal/product}
+
+socket-io:
+  hostname: localhost
+  port: 8081
+  timeout: 3600 # 1 hour timeout
+
+firebase:
+  admin:
+    json-path: /grocery-ff691-firebase-adminsdk-wrjkj-88bb767797.json
+    app-name: grocery

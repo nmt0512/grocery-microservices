@@ -27,8 +27,9 @@ public class RouteLocatorConfig {
                 )
                 .route("grocery-payment", r -> r
                         .path("/api/payment/**",
-                                "/api/bill/**",
-                                "/api/staff/bill/**")
+                                "/api/bill/**", "/api/internal/bill/**",
+                                "/api/staff/bill/**",
+                                "/api/device/**")
                         .uri("lb://grocery-payment"))
                 .build();
     }

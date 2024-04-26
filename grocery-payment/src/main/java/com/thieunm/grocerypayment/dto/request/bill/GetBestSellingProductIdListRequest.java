@@ -1,4 +1,4 @@
-package com.thieunm.groceryproduct.dto.request.product;
+package com.thieunm.grocerypayment.dto.request.bill;
 
 import com.thieunm.grocerybase.dto.request.QueryRequestData;
 import lombok.*;
@@ -10,6 +10,7 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetProductByCategoryIdPagingRequest extends QueryRequestData {
-    private Integer categoryId;
+public class GetBestSellingProductIdListRequest extends QueryRequestData {
+    private int recentDays;
+    private int size;
 }
