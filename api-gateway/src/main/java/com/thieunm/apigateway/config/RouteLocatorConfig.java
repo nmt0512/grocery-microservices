@@ -31,6 +31,9 @@ public class RouteLocatorConfig {
                                 "/api/staff/bill/**",
                                 "/api/device/**")
                         .uri("lb://grocery-payment"))
+                .route("grocery-netty-socket", r -> r
+                        .path("/socket.io/**")
+                        .uri("http://localhost:8081"))
                 .build();
     }
 }
