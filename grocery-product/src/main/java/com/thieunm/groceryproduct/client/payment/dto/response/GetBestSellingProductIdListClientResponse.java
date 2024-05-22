@@ -1,4 +1,4 @@
-package com.thieunm.groceryproduct.client.dto.response;
+package com.thieunm.groceryproduct.client.payment.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

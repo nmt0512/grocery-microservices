@@ -14,12 +14,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductResponse extends QueryResponseData {
-    private Integer id;
+    private int id;
+    private Integer categoryId;
     private String name;
     private String code;
     private String description;
-    private Integer unitPrice;
-    private Integer quantity;
+    private int unitPrice;
+    private int quantity;
     @JsonProperty("images")
     private List<String> imageUrlList;
 }

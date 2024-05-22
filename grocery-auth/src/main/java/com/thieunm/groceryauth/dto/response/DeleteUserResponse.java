@@ -1,4 +1,4 @@
-package com.thieunm.groceryproduct.dto.response.product;
+package com.thieunm.groceryauth.dto.response;
 
 import com.thieunm.grocerybase.dto.response.CommandResponseData;
 import lombok.*;
@@ -9,7 +9,5 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-@AllArgsConstructor
-public class CreateProductResponse extends CommandResponseData {
-    private ProductResponse productResponse;
+public class DeleteUserResponse extends CommandResponseData {
 }

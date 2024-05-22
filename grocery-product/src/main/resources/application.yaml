@@ -28,9 +28,11 @@ spring:
           jwk-set-uri: http://localhost:8180/realms/grocery-realm/protocol/openid-connect/certs
 
 cloudinary:
+  api-url: ${CLOUDINARY_URL:cloudinary://558427153628728:JMtTD8ZsLAlUILfUxULWSCLFmBg@dtcdff7yy}
   product-url:
     regex: https://res.cloudinary.com/dtcdff7yy/image/upload
     resized-regex: https://res.cloudinary.com/dtcdff7yy/image/upload/c_fill,w_350,h_350
+  product-prefix-path: grocery/product
 
 eureka:
   client:

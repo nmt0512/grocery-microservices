@@ -1,5 +1,6 @@
 package com.thieunm.groceryproduct.dto.request.product;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thieunm.grocerybase.dto.request.CommandRequestData;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -13,11 +14,14 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateProductRequest extends CommandRequestData {
+public class UpdateProductRequest extends CommandRequestData {
+    private int id;
     private int categoryId;
     private String name;
-    private int quantity;
-    private int unitPrice;
+    private Integer quantity;
+    private Integer unitPrice;
     private String description;
+    @JsonProperty("images")
+    private List<String> imageUrlList;
     private List<MultipartFile> fileList;
 }

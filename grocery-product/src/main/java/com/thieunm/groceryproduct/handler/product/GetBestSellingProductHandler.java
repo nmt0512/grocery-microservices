@@ -1,7 +1,7 @@
 package com.thieunm.groceryproduct.handler.product;
 
 import com.thieunm.grocerybase.cqrs.query.QueryHandler;
-import com.thieunm.groceryproduct.client.IPaymentClient;
+import com.thieunm.groceryproduct.client.payment.IPaymentClient;
 import com.thieunm.groceryproduct.dto.request.product.GetBestSellingProductRequest;
 import com.thieunm.groceryproduct.dto.response.product.GetBestSellingProductResponse;
 import com.thieunm.groceryproduct.dto.response.product.ProductResponse;
@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GetBestSellingProductHandler extends QueryHandler<GetBestSellingProductRequest, GetBestSellingProductResponse> {
 
-    private static final int RECENT_DAYS = 7;
+    private static final int RECENT_DAYS = 30;
     private static final int SIZE = 10;
 
     private final ProductRepository productRepository;

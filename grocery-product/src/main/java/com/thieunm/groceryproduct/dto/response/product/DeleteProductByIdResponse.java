@@ -10,6 +10,6 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateProductResponse extends CommandResponseData {
-    private ProductResponse productResponse;
+public class DeleteProductByIdResponse extends CommandResponseData {
+    private int deletedProductId;
 }

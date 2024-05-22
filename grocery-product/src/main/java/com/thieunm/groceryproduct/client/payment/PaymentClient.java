@@ -1,7 +1,7 @@
-package com.thieunm.groceryproduct.client;
+package com.thieunm.groceryproduct.client.payment;
 
 import com.thieunm.grocerybase.dto.response.BaseResponse;
-import com.thieunm.groceryproduct.client.dto.response.GetBestSellingProductIdListClientResponse;
+import com.thieunm.groceryproduct.client.payment.dto.response.GetBestSellingProductIdListClientResponse;
 import com.thieunm.groceryutils.JsonMapperUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

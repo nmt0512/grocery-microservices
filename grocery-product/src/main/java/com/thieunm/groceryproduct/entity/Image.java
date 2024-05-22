@@ -16,6 +16,9 @@ public class Image {
     @Column
     private Integer id;
 
+    @Column(name = "cloudinary_id", unique = true)
+    private String cloudinaryId;
+
     @Column(nullable = false)
     private String url;
 

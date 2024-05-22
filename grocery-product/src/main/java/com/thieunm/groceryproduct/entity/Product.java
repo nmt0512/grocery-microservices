@@ -51,6 +51,6 @@ public class Product extends JpaAuditable<String> {
     @JoinColumn(name = "brand_id")
     private Brand brand;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "product")
     private List<Image> imageList;
 }

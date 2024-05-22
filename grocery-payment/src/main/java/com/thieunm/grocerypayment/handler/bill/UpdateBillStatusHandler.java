@@ -12,8 +12,7 @@ import com.thieunm.grocerypayment.repository.CustomerDeviceRepository;
 import com.thieunm.grocerypayment.utils.BillUtil;
 import com.thieunm.groceryutils.JsonWebTokenUtil;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,9 +20,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UpdateBillStatusHandler extends CommandHandler<UpdateBillStatusRequest, UpdateBillStatusResponse> {
 
-    private static final Logger log = LoggerFactory.getLogger(UpdateBillStatusHandler.class);
     private final BillRepository billRepository;
     private final BillUtil billUtil;
 
@@ -58,7 +57,7 @@ public class UpdateBillStatusHandler extends CommandHandler<UpdateBillStatusRequ
                 .build();
         try {
             BatchResponse batchResponse = firebaseMessaging.sendEachForMulticast(multicastMessage);
-            log.info(String.valueOf(batchResponse.getSuccessCount()));
+            log.info("Number of successfully sent notification via Firebase: {}", batchResponse.getSuccessCount());
         } catch (FirebaseMessagingException exception) {
             exception.printStackTrace();
         }
