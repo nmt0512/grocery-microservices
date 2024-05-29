@@ -29,7 +29,7 @@ public class CloudinaryClient implements ICloudinaryClient {
                 "folder", request.getPathToFile()
         ));
         log.info("Uploaded to Cloudinary with response: [{}]", uploadResponse);
-        String imageUrl = uploadResponse.get("url").toString();
+        String imageUrl = uploadResponse.get("secure_url").toString();
         String cloudinaryId = uploadResponse.get("public_id").toString();
         return UploadImageClientResponse.builder()
                 .cloudinaryId(cloudinaryId)
