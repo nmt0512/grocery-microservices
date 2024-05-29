@@ -1,8 +1,10 @@
 package com.thieunm.groceryproduct.client.payment;
 
-import com.thieunm.groceryproduct.client.payment.dto.response.GetBestSellingProductIdListClientResponse;
+import com.thieunm.groceryproduct.client.payment.dto.response.GetProductIdListClientResponse;
 
 public interface IPaymentClient {
 
-    GetBestSellingProductIdListClientResponse getBestSellingProductIdList(int recentDays, int size);
+    GetProductIdListClientResponse getBestSellingProductIdList(int recentDays, int size);
+
+    GetProductIdListClientResponse getRecommendedProductIdList(String accessToken, int recentDays, int size);
 }
