@@ -33,12 +33,15 @@ public class DeleteProductByIdHandler extends CommandHandler<DeleteProductByIdRe
             throw new NoSuchElementException();
         }
         Product product = optionalProduct.get();
-        List<String> cloudinaryIdList = product.getImageList()
-                .stream()
-                .map(Image::getCloudinaryId)
-                .toList();
-        cloudinaryClient.deleteImage(new DeleteImageClientRequest(cloudinaryIdList));
-        imageRepository.deleteAll(product.getImageList());
+        List<Image> imageList = product.getImageList();
+        if (imageList != null && !imageList.isEmpty()) {
+            List<String> cloudinaryIdList = product.getImageList()
+                    .stream()
+                    .map(Image::getCloudinaryId)
+                    .toList();
+            cloudinaryClient.deleteImage(new DeleteImageClientRequest(cloudinaryIdList));
+            imageRepository.deleteAll(product.getImageList());
+        }
         productRepository.delete(product);
         return new DeleteProductByIdResponse(requestData.getId());
     }
