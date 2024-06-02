@@ -40,9 +40,10 @@ public class CloudinaryClient implements ICloudinaryClient {
     @Override
     @SneakyThrows
     @Async
-    public DeleteImageClientResponse deleteImage(DeleteImageClientRequest request) {
+    public void deleteImage(DeleteImageClientRequest request) {
         ApiResponse deleteResponse = cloudinary.api().deleteResources(request.getCloudinaryIdList(), ObjectUtils.emptyMap());
         log.info("Deleted images in Cloudinary with response: [{}]", deleteResponse);
-        return new DeleteImageClientResponse();
+        new DeleteImageClientResponse();
     }
+
 }
