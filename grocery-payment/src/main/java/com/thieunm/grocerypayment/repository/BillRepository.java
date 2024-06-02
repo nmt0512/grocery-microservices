@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface BillRepository extends JpaRepository<Bill, Integer> {
@@ -37,4 +38,6 @@ public interface BillRepository extends JpaRepository<Bill, Integer> {
             nativeQuery = true
     )
     List<Integer> getRecommendedProductIdList(int recentDays, String customerId, int size);
+
+    List<Bill> findByStatusNotAndPickUpTimeBefore(String status, LocalDateTime currentTime);
 }
