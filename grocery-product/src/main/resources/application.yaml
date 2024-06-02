@@ -33,6 +33,7 @@ cloudinary:
     regex: https://res.cloudinary.com/dtcdff7yy/image/upload
     resized-regex: https://res.cloudinary.com/dtcdff7yy/image/upload/c_fill,w_350,h_350
   product-prefix-path: grocery/product
+  category-prefix-path: grocery/category
 
 eureka:
   client:
