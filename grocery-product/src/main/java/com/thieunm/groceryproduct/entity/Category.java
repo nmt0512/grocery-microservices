@@ -29,6 +29,9 @@ public class Category {
     @Column
     private String imageUrl;
 
+    @Column(name = "cloudinary_id", unique = true)
+    private String cloudinaryId;
+
     @OneToMany(mappedBy = "category")
     private List<Product> productList;
 }
