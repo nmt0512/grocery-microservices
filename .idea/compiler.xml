@@ -13,7 +13,6 @@
         <module name="grocery-auth" />
         <module name="eureka-discovery-server" />
         <module name="api-gateway" />
-        <module name="grocery-security" />
         <module name="grocery-utils" />
         <module name="grocery-base" />
       </profile>
@@ -21,6 +20,7 @@
     <bytecodeTargetLevel>
       <module name="grocery-authorization" target="17" />
       <module name="grocery-bill" target="17" />
+      <module name="grocery-security" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

@@ -9,12 +9,6 @@ spring:
   data:
     mongodb:
       uri: ${MONGO_URI:mongodb://localhost:27017/grocery_cart}
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8180/realms/grocery-realm
-          jwk-set-uri: http://localhost:8180/realms/grocery-realm/protocol/openid-connect/certs
 
 eureka:
   client:

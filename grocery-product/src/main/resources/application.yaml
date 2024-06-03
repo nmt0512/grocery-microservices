@@ -20,12 +20,6 @@ spring:
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8180/realms/grocery-realm
-          jwk-set-uri: http://localhost:8180/realms/grocery-realm/protocol/openid-connect/certs
 
 cloudinary:
   api-url: ${CLOUDINARY_URL:cloudinary://558427153628728:JMtTD8ZsLAlUILfUxULWSCLFmBg@dtcdff7yy}

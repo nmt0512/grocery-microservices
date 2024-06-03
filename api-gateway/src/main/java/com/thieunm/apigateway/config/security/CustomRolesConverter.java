@@ -1,4 +1,4 @@
-package com.thieunm.grocerysecurity.config;
+package com.thieunm.apigateway.config.security;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;

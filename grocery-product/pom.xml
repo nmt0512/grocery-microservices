@@ -62,11 +62,6 @@
             <artifactId>grocery-utils</artifactId>
             <version>${grocery.common}</version>
         </dependency>
-        <dependency>
-            <groupId>com.thieunm</groupId>
-            <artifactId>grocery-security</artifactId>
-            <version>${grocery.common}</version>
-        </dependency>
 
         <dependency>
             <groupId>com.cloudinary</groupId>

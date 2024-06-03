@@ -16,7 +16,6 @@
     <modules>
         <module>grocery-base</module>
         <module>grocery-utils</module>
-        <module>grocery-security</module>
     </modules>
 
     <properties>

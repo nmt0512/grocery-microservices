@@ -19,6 +19,7 @@
       <set>
         <option value="$PROJECT_DIR$/grocery-authorization/pom.xml" />
         <option value="$PROJECT_DIR$/grocery-bill/pom.xml" />
+        <option value="$PROJECT_DIR$/grocery-common/grocery-security/pom.xml" />
       </set>
     </option>
   </component>
