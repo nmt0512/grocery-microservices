@@ -14,7 +14,8 @@ public class CustomRolesConverter implements Converter<Jwt, Collection<GrantedAu
     @Override
     public Collection<GrantedAuthority> convert(Jwt jwt) {
         return ((List<String>) jwt.getClaimAsMap("realm_access").get("roles"))
-                .stream().map(roleName -> "ROLE_" + roleName.toUpperCase())
+                .stream()
+                .map(roleName -> "ROLE_" + roleName.toUpperCase())
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
