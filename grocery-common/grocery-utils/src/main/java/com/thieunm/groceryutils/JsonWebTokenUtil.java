@@ -16,12 +16,19 @@ import java.util.Map;
 public class JsonWebTokenUtil {
 
     public static String getPhoneNumber(String token) {
-        return getClaims(token).getClaimValueAsString("preferred_username");
+        JwtClaims jwtClaims = getClaims(token);
+        if (jwtClaims != null) {
+            return getClaims(token).getClaimValueAsString("preferred_username");
+        }
+        return null;
     }
 
     public static String getUserId(String token) {
         try {
-            return getClaims(token).getSubject();
+            JwtClaims jwtClaims = getClaims(token);
+            if (jwtClaims != null) {
+                return getClaims(token).getSubject();
+            }
         } catch (MalformedClaimException e) {
             e.printStackTrace();
         }
@@ -30,8 +37,11 @@ public class JsonWebTokenUtil {
 
     public static List<String> getRoleList(String token) {
         try {
-            Map<String, Object> roleClaimMap = getClaims(token).getClaimValue("realm_access", HashMap.class);
-            return (List<String>) roleClaimMap.get("roles");
+            JwtClaims jwtClaims = getClaims(token);
+            if (jwtClaims != null) {
+                Map<String, Object> roleClaimMap = getClaims(token).getClaimValue("realm_access", HashMap.class);
+                return (List<String>) roleClaimMap.get("roles");
+            }
         } catch (MalformedClaimException e) {
             e.printStackTrace();
         }
