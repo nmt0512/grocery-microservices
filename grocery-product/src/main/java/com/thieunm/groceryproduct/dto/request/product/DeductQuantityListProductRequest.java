@@ -13,5 +13,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeductQuantityListProductRequest extends CommandRequestData {
-    private List<DeductProductRequest> deductProductRequestList;
+    private List<DeductingProduct> deductingProductList;
 }

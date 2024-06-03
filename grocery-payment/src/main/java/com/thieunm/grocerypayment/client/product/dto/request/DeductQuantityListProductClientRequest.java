@@ -12,5 +12,5 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class DeductQuantityListProductClientRequest {
-    private List<DeductProductRequest> deductProductRequestList;
+    private List<DeductingProduct> deductingProductList;
 }

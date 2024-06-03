@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DeductProductRequest {
+public class DeductingProduct {
     private Integer productId;
     private Integer deductingQuantity;
 }

@@ -23,6 +23,14 @@ spring:
   scheduler:
     pool-size: 30
     thread-name-prefix: ThreadScheduler-
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:localhost:29092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    topics:
+      cart: ${CART_TOPIC:com.grocery.send.cart}
+      product: ${PRODUCT_TOPIC:com.grocery.send.product}
 
 eureka:
   client:

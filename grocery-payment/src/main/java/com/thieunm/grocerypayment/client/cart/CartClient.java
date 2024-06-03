@@ -3,6 +3,7 @@ package com.thieunm.grocerypayment.client.cart;
 import com.thieunm.grocerybase.dto.response.BaseResponse;
 import com.thieunm.grocerypayment.client.cart.dto.request.DeleteAndGetCartByIdListClientRequest;
 import com.thieunm.grocerypayment.client.cart.dto.response.DeleteAndGetCartByIdListClientResponse;
+import com.thieunm.grocerypayment.exception.CartClientException;
 import com.thieunm.groceryutils.JsonMapperUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,13 +33,17 @@ public class CartClient implements ICartClient {
                 .queryParam("idList", request.getCartIdList())
                 .build();
         log.info("REQUEST to uri {}", uriComponents.toUri());
-        BaseResponse baseResponse = restClientBuilder.build()
-                .delete()
-                .uri(uriComponents.toUri())
-                .retrieve()
-                .body(BaseResponse.class);
-        log.info("RESPONSE from uri {} with body: {}", uriComponents.toUri(), JsonMapperUtil.toString(baseResponse));
-        String responseDataJsonStr = JsonMapperUtil.toString(baseResponse.getData());
-        return JsonMapperUtil.parseJsonToObject(responseDataJsonStr, DeleteAndGetCartByIdListClientResponse.class);
+        try {
+            BaseResponse baseResponse = restClientBuilder.build()
+                    .delete()
+                    .uri(uriComponents.toUri())
+                    .retrieve()
+                    .body(BaseResponse.class);
+            log.info("RESPONSE from uri {} with body: {}", uriComponents.toUri(), JsonMapperUtil.toString(baseResponse));
+            String responseDataJsonStr = JsonMapperUtil.toString(baseResponse.getData());
+            return JsonMapperUtil.parseJsonToObject(responseDataJsonStr, DeleteAndGetCartByIdListClientResponse.class);
+        } catch (Exception exception) {
+            throw new CartClientException("Cart Client Error on request to uri " + uriComponents.toUri());
+        }
     }
 }

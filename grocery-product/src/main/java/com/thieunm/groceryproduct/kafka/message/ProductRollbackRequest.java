@@ -1,6 +1,6 @@
-package com.thieunm.grocerypayment.client.product.dto.response;
+package com.thieunm.groceryproduct.kafka.message;
 
-import com.thieunm.grocerypayment.client.product.dto.request.DeductingProduct;
+import com.thieunm.groceryproduct.dto.request.product.DeductingProduct;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DeductQuantityListProductClientResponse {
+public class ProductRollbackRequest {
     private List<DeductingProduct> deductingProductList;
 }

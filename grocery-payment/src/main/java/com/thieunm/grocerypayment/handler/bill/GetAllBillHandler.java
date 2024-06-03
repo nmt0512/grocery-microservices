@@ -6,6 +6,7 @@ import com.thieunm.grocerypayment.dto.request.bill.GetAllBillRequest;
 import com.thieunm.grocerypayment.dto.response.bill.BillResponse;
 import com.thieunm.grocerypayment.dto.response.bill.GetAllBillResponse;
 import com.thieunm.grocerypayment.entity.Bill;
+import com.thieunm.grocerypayment.enums.BillStatus;
 import com.thieunm.grocerypayment.repository.BillRepository;
 import com.thieunm.grocerypayment.utils.BillUtil;
 import com.thieunm.groceryutils.JsonWebTokenUtil;
@@ -40,20 +41,27 @@ public class GetAllBillHandler extends QueryHandler<GetAllBillRequest, GetAllBil
                     requestData.getPageSize(),
                     Sort.by(Sort.Direction.DESC, "createdDate")
             );
-            billList = requestData.getBillStatusList() == null
-                    ?
-                    billRepository.findByCustomerId(userId, pageable)
-                    :
-                    billRepository.findByCustomerIdAndStatusIn(userId, requestData.getBillStatusList(), pageable);
-
-            List<BillResponse> billResponseList = billUtil.mapBillListToBillResponseList(billList);
-            return new GetAllBillResponse(billResponseList);
+            if (requestData.getBillStatusList() == null) {
+                billList = billRepository.findByCustomerId(userId, pageable);
+            } else {
+                Pageable statusPageable = requestData.getBillStatusList().contains(BillStatus.PAID)
+                        ?
+                        pageable
+                        :
+                        PageRequest.of(
+                                pageIndex,
+                                requestData.getPageSize(),
+                                Sort.by(Sort.Direction.DESC, "lastModifiedDate")
+                        );
+                billList = billRepository.findByCustomerIdAndStatusIn(userId, requestData.getBillStatusList(), statusPageable);
+            }
         } else {
-            Pageable pageable = PageRequest.of(
-                    pageIndex,
-                    requestData.getPageSize(),
+            Sort sort = requestData.getBillStatusList().contains(BillStatus.PAID)
+                    ?
                     Sort.by(Sort.Direction.ASC, "pickUpTime")
-            );
+                    :
+                    Sort.by(Sort.Direction.DESC, "lastModifiedDate");
+            Pageable pageable = PageRequest.of(pageIndex, requestData.getPageSize(), sort);
             billList = billRepository.findByStatusIn(requestData.getBillStatusList(), pageable);
         }
         List<BillResponse> billResponseList = billUtil.mapBillListToBillResponseList(billList);

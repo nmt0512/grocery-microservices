@@ -9,7 +9,15 @@ spring:
   data:
     mongodb:
       uri: ${MONGO_URI:mongodb://localhost:27017/grocery_cart}
-
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:localhost:29092}
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: latest
+      group-id: ${GROUP_ID:grocery-cart}
+    topics:
+      cart: ${CART_TOPIC:com.grocery.send.cart}
 eureka:
   client:
     serviceUrl:

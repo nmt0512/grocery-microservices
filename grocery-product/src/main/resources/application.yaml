@@ -20,6 +20,15 @@ spring:
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:localhost:29092}
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: latest
+      group-id: ${GROUP_ID:grocery-product}
+    topics:
+      product: ${PRODUCT_TOPIC:com.grocery.send.product}
 
 cloudinary:
   api-url: ${CLOUDINARY_URL:cloudinary://558427153628728:JMtTD8ZsLAlUILfUxULWSCLFmBg@dtcdff7yy}

@@ -5,6 +5,7 @@ import com.thieunm.grocerypayment.client.product.dto.request.DeductQuantityListP
 import com.thieunm.grocerypayment.client.product.dto.request.GetProductByIdListClientRequest;
 import com.thieunm.grocerypayment.client.product.dto.response.DeductQuantityListProductClientResponse;
 import com.thieunm.grocerypayment.client.product.dto.response.GetProductByIdListClientResponse;
+import com.thieunm.grocerypayment.exception.ProductClientException;
 import com.thieunm.groceryutils.JsonMapperUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,13 +38,17 @@ public class ProductClient implements IProductClient {
                 .fromHttpUrl(deductQuantityListProductUrl)
                 .build();
         log.info("REQUEST to uri {}", uriComponents.toUri());
-        HttpEntity<DeductQuantityListProductClientRequest> httpEntity = new HttpEntity<>(request, null);
-        BaseResponse baseResponse = restTemplate
-                .exchange(uriComponents.toUri(), HttpMethod.PUT, httpEntity, BaseResponse.class)
-                .getBody();
-        log.info("RESPONSE from uri {} with body: {}", uriComponents.toUri(), JsonMapperUtil.toString(baseResponse));
-        String responseDataJsonStr = JsonMapperUtil.toString(baseResponse.getData());
-        return JsonMapperUtil.parseJsonToObject(responseDataJsonStr, DeductQuantityListProductClientResponse.class);
+        try {
+            HttpEntity<DeductQuantityListProductClientRequest> httpEntity = new HttpEntity<>(request, null);
+            BaseResponse baseResponse = restTemplate
+                    .exchange(uriComponents.toUri(), HttpMethod.PUT, httpEntity, BaseResponse.class)
+                    .getBody();
+            log.info("RESPONSE from uri {} with body: {}", uriComponents.toUri(), JsonMapperUtil.toString(baseResponse));
+            String responseDataJsonStr = JsonMapperUtil.toString(baseResponse.getData());
+            return JsonMapperUtil.parseJsonToObject(responseDataJsonStr, DeductQuantityListProductClientResponse.class);
+        } catch (Exception exception) {
+            throw new ProductClientException("Product Client Error on request to uri " + uriComponents.toUri());
+        }
     }
 
     @Override
