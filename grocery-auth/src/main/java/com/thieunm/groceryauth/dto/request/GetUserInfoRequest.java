@@ -11,5 +11,4 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public class GetUserInfoRequest extends QueryRequestData {
-
 }

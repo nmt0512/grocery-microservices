@@ -33,8 +33,8 @@ public class GetAllBillHandler extends QueryHandler<GetAllBillRequest, GetAllBil
         boolean isCustomerRole = JsonWebTokenUtil.getRoleList(requestData.getAccessToken())
                 .stream()
                 .anyMatch(role -> role.equals(AccountRoles.CUSTOMER));
-        List<Bill> billList;
         int pageIndex = requestData.getPageNumber() - 1;
+        List<Bill> billList;
         if (isCustomerRole) {
             Pageable pageable = PageRequest.of(
                     pageIndex,

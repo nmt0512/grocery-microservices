@@ -12,10 +12,10 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StaffLoginResponse extends QueryResponseData {
+    private long refreshExpiresIn;
+    private String refreshToken;
     @JsonProperty("accessToken")
     private String token;
-
     private long expiresIn;
-
     private String tokenType;
 }

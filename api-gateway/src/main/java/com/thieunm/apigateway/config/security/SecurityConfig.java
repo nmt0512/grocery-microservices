@@ -29,7 +29,8 @@ public class SecurityConfig {
                         "/api/auth/adminLogin",
                         "/api/auth/login",
                         "/api/auth/staffLogin",
-                        "/api/auth/registerCustomer"
+                        "/api/auth/registerCustomer",
+                        "/api/auth/refreshToken"
                 ))
                 .authorizeExchange(authorize -> authorize.anyExchange().permitAll())
                 .addFilterBefore(
@@ -38,7 +39,8 @@ public class SecurityConfig {
                                 "/api/auth/adminLogin",
                                 "/api/auth/login",
                                 "/api/auth/staffLogin",
-                                "/api/auth/registerCustomer"
+                                "/api/auth/registerCustomer",
+                                "/api/auth/refreshToken"
                         ),
                         SecurityWebFiltersOrder.AUTHENTICATION
                 );
@@ -56,7 +58,8 @@ public class SecurityConfig {
                                         "/api/auth/userInfo",
                                         "/api/device").hasRole("CUSTOMER")
                                 .pathMatchers("/api/staff/bill/status").hasRole("STAFF")
-                                .pathMatchers("/api/statistic/**").hasRole("ADMIN")
+                                .pathMatchers("/api/statistic/**",
+                                        "/api/auth/admin/**").hasRole("ADMIN")
                                 .pathMatchers("/api/product/**",
                                         "/api/category/**").hasAnyRole("CUSTOMER", "ADMIN")
                                 .pathMatchers("/api/bill/**").hasAnyRole("CUSTOMER", "STAFF")

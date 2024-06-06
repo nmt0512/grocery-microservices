@@ -31,7 +31,7 @@ public class CustomerLoginHandler extends QueryHandler<CustomerLoginRequest, Cus
                 .username(requestData.getPhoneNumber())
                 .password(requestData.getPassword())
                 .build();
-        AccessTokenResponse accessTokenResponse = keycloak.tokenManager().grantToken();
+        AccessTokenResponse accessTokenResponse = keycloak.tokenManager().getAccessToken();
         keycloak.close();
         return Mapper.map(accessTokenResponse, CustomerLoginResponse.class);
     }
