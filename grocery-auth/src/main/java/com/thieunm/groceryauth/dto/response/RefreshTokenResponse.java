@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdminLoginResponse extends QueryResponseData {
+public class RefreshTokenResponse extends QueryResponseData {
     private long refreshExpiresIn;
     private String refreshToken;
     @JsonProperty("accessToken")
