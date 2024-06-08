@@ -1,10 +1,10 @@
-package com.thieunm.grocerypayment.handler.customer_device;
+package com.thieunm.grocerynotify.handler;
 
 import com.thieunm.grocerybase.cqrs.command.CommandHandler;
-import com.thieunm.grocerypayment.dto.request.customer_device.CreateCustomerDeviceRequest;
-import com.thieunm.grocerypayment.dto.response.customer_device.CreateCustomerDeviceResponse;
-import com.thieunm.grocerypayment.entity.CustomerDevice;
-import com.thieunm.grocerypayment.repository.CustomerDeviceRepository;
+import com.thieunm.grocerynotify.dto.request.CreateCustomerDeviceRequest;
+import com.thieunm.grocerynotify.dto.response.CreateCustomerDeviceResponse;
+import com.thieunm.grocerynotify.entity.CustomerDevice;
+import com.thieunm.grocerynotify.repository.CustomerDeviceRepository;
 import com.thieunm.groceryutils.JsonWebTokenUtil;
 import com.thieunm.groceryutils.Mapper;
 import lombok.RequiredArgsConstructor;

@@ -13,6 +13,7 @@
     <file url="file://$PROJECT_DIR$/grocery-common/grocery-utils/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/grocery-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/grocery-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grocery-notify/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/grocery-payment/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/grocery-product/src/main/java" charset="UTF-8" />
   </component>

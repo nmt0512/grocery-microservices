@@ -1,18 +1,18 @@
-package com.thieunm.grocerypayment.controller.customer_device;
+package com.thieunm.grocerynotify.controller;
 
 import com.thieunm.grocerybase.cqrs.BaseController;
 import com.thieunm.grocerybase.dto.response.BaseResponse;
-import com.thieunm.grocerypayment.dto.request.customer_device.CreateCustomerDeviceRequest;
-import com.thieunm.grocerypayment.dto.response.customer_device.CreateCustomerDeviceResponse;
+import com.thieunm.grocerynotify.dto.request.CreateCustomerDeviceRequest;
+import com.thieunm.grocerynotify.dto.response.CreateCustomerDeviceResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/device")
+@RequestMapping("/api/notify")
 public class CreateCustomerDeviceController extends BaseController {
 
-    @PostMapping
+    @PostMapping("/device")
     ResponseEntity<BaseResponse<CreateCustomerDeviceResponse>> createCustomerDevice(
             @RequestHeader(HttpHeaders.AUTHORIZATION) String token,
             @RequestBody CreateCustomerDeviceRequest request

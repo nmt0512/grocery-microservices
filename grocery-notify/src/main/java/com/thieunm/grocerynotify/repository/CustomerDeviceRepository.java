@@ -1,6 +1,6 @@
-package com.thieunm.grocerypayment.repository;
+package com.thieunm.grocerynotify.repository;
 
-import com.thieunm.grocerypayment.entity.CustomerDevice;
+import com.thieunm.grocerynotify.entity.CustomerDevice;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

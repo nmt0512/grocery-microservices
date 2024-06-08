@@ -1,4 +1,4 @@
-package com.thieunm.grocerypayment.dto.response.customer_device;
+package com.thieunm.grocerynotify.dto.response;
 
 import com.thieunm.grocerybase.dto.response.CommandResponseData;
 import lombok.*;

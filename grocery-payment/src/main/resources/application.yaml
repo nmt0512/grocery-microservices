@@ -31,6 +31,7 @@ spring:
     topics:
       cart: ${CART_TOPIC:com.grocery.send.cart}
       product: ${PRODUCT_TOPIC:com.grocery.send.product}
+      notify: ${NOTIFY_TOPIC:com.grocery.send.notify}
 
 eureka:
   client:
@@ -51,8 +52,3 @@ socket-io:
   hostname: localhost
   port: 8081
   timeout: 3600 # 1 hour timeout
-
-firebase:
-  admin:
-    json-path: /grocery-ff691-firebase-adminsdk-wrjkj-88bb767797.json
-    app-name: grocery

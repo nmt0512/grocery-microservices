@@ -25,11 +25,14 @@ public class RouteLocatorConfig {
                         .path("/api/cart/**")
                         .uri("lb://grocery-cart")
                 )
+                .route("grocery-notify", r -> r
+                        .path("/api/notify/**")
+                        .uri("lb://grocery-notify")
+                )
                 .route("grocery-payment", r -> r
                         .path("/api/payment/**",
                                 "/api/bill/**", "/api/internal/bill/**",
                                 "/api/staff/bill/**",
-                                "/api/device/**",
                                 "/api/statistic/**")
                         .uri("lb://grocery-payment"))
                 .route("grocery-netty-socket", r -> r

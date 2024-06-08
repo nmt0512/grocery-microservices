@@ -56,7 +56,7 @@ public class SecurityConfig {
                                         "/api/payment/**",
                                         "/api/auth/password",
                                         "/api/auth/userInfo",
-                                        "/api/device").hasRole("CUSTOMER")
+                                        "/api/notify/device/**").hasRole("CUSTOMER")
                                 .pathMatchers("/api/staff/bill/status").hasRole("STAFF")
                                 .pathMatchers("/api/statistic/**",
                                         "/api/auth/admin/**").hasRole("ADMIN")

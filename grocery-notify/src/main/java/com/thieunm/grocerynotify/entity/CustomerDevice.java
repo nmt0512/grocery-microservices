@@ -1,4 +1,4 @@
-package com.thieunm.grocerypayment.entity;
+package com.thieunm.grocerynotify.entity;
 
 import com.thieunm.grocerybase.entity.JpaAuditable;
 import jakarta.persistence.*;

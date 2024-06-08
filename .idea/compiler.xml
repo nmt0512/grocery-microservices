@@ -12,6 +12,7 @@
         <module name="grocery-product" />
         <module name="grocery-auth" />
         <module name="eureka-discovery-server" />
+        <module name="grocery-notify" />
         <module name="api-gateway" />
         <module name="grocery-utils" />
         <module name="grocery-base" />
@@ -32,6 +33,7 @@
       <module name="grocery-base" options="-parameters" />
       <module name="grocery-bill" options="-parameters" />
       <module name="grocery-cart" options="-parameters" />
+      <module name="grocery-notify" options="-parameters" />
       <module name="grocery-payment" options="-parameters" />
       <module name="grocery-product" options="-parameters" />
       <module name="grocery-security" options="-parameters" />

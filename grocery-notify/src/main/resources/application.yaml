@@ -1,0 +1,41 @@
+server:
+  port: ${SERVER_PORT:0}
+  shutdown: graceful
+spring:
+  application:
+    name: ${APP_NAME:grocery-notify}
+  profiles:
+    active: ${ENV:dev}
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3000/grocery_notify
+    username: root
+    password: nmtkma0550
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: false
+    properties:
+      format_sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:localhost:29092}
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: latest
+      group-id: ${GROUP_ID:grocery-notify}
+    topics:
+      notify: ${NOTIFY_TOPIC:com.grocery.send.notify}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+firebase:
+  admin:
+    json-path: /grocery-ff691-firebase-adminsdk-wrjkj-88bb767797.json
+    app-name: grocery

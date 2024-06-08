@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/grocery-cart/pom.xml" />
         <option value="$PROJECT_DIR$/grocery-payment/pom.xml" />
         <option value="$PROJECT_DIR$/grocery-bill/pom.xml" />
+        <option value="$PROJECT_DIR$/grocery-notify/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
