@@ -1,3 +1,4 @@
+/home/thieunm/Workspace/grocery/grocery/grocery-common/grocery-base/src/main/java/com/thieunm/grocerybase/enums/NotifyType.java
 /home/thieunm/Workspace/grocery/grocery/grocery-common/grocery-base/src/main/java/com/thieunm/grocerybase/cqrs/ParamHandler.java
 /home/thieunm/Workspace/grocery/grocery/grocery-common/grocery-base/src/main/java/com/thieunm/grocerybase/exception/CommonErrorCode.java
 /home/thieunm/Workspace/grocery/grocery/grocery-common/grocery-base/src/main/java/com/thieunm/grocerybase/dto/response/CommandResponseData.java

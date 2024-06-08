@@ -10,6 +10,7 @@ com/thieunm/grocerybase/exception/CommonErrorCode.class
 com/thieunm/grocerybase/cqrs/PageSupportHandler.class
 com/thieunm/grocerybase/dto/response/ResponseData.class
 com/thieunm/grocerybase/dto/request/QueryRequestData.class
+com/thieunm/grocerybase/enums/NotifyType.class
 com/thieunm/grocerybase/dto/request/RequestData.class
 com/thieunm/grocerybase/dto/response/ResponseFactory.class
 com/thieunm/grocerybase/cqrs/command/ParamCommandHandler.class

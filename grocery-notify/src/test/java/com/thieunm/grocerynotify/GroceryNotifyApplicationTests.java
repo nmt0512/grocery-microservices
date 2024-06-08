@@ -1,4 +1,4 @@
-package com.thieunm.grocery_notify;
+package com.thieunm.grocerynotify;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
