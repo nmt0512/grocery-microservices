@@ -10,6 +10,6 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetSimilarProductListByProductIdRequest extends QueryRequestData {
-    private Integer id;
+public class GetSimilarProductListByIdRequest extends QueryRequestData {
+    private int id;
 }

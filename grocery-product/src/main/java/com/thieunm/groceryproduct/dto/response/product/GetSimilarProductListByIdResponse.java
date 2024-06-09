@@ -1,6 +1,5 @@
 package com.thieunm.groceryproduct.dto.response.product;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thieunm.grocerybase.dto.response.QueryResponseData;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -13,7 +12,6 @@ import java.util.List;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetSimilarProductListByProductIdResponse extends QueryResponseData {
-    @JsonProperty("similarProductList")
+public class GetSimilarProductListByIdResponse extends QueryResponseData {
     private List<ProductResponse> productResponseList;
 }
