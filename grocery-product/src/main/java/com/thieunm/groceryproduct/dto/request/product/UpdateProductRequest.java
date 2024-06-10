@@ -18,6 +18,7 @@ public class UpdateProductRequest extends CommandRequestData {
     private int id;
     private int categoryId;
     private String name;
+    private String code;
     private Integer quantity;
     private Integer unitPrice;
     private String description;

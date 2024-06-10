@@ -1,5 +1,6 @@
 package com.thieunm.grocerypayment.repository;
 
+import com.thieunm.grocerypayment.dto.response.bill.BestSellingProductQuantityResponse;
 import com.thieunm.grocerypayment.dto.response.statistic.StatisticResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,5 +42,15 @@ public class StatisticRepository {
                 " FROM bill WHERE status = 'COMPLETED' AND DATE_FORMAT(last_modified_date, '%m-%Y') = '" + month +
                 "' GROUP BY DAY(last_modified_date)";
         return jdbcTemplate.query(query, new BeanPropertyRowMapper<>(StatisticResponse.class));
+    }
+
+    public List<BestSellingProductQuantityResponse> getBestSellingProductQuantityList(int recentDays, int size) {
+        String query = "SELECT bi.product_id AS id, COUNT(bi.product_id) AS quantity " +
+                "FROM bill b JOIN bill_item bi ON b.id = bi.bill_id " +
+                "WHERE b.created_date >= DATE_SUB(CURDATE(), INTERVAL " + recentDays + " DAY) " +
+                "GROUP BY bi.product_id " +
+                "ORDER BY COUNT(bi.product_id) DESC " +
+                "LIMIT " + size;
+        return jdbcTemplate.query(query, new BeanPropertyRowMapper<>(BestSellingProductQuantityResponse.class));
     }
 }
