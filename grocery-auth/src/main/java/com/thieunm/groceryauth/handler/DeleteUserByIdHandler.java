@@ -4,6 +4,8 @@ import com.thieunm.groceryauth.dto.request.DeleteUserByIdRequest;
 import com.thieunm.groceryauth.dto.response.DeleteUserByIdResponse;
 import com.thieunm.groceryauth.utils.KeycloakUtil;
 import com.thieunm.grocerybase.cqrs.command.CommandHandler;
+import com.thieunm.grocerybase.exception.BaseException;
+import com.thieunm.grocerybase.exception.CommonErrorCode;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,9 +31,10 @@ public class DeleteUserByIdHandler extends CommandHandler<DeleteUserByIdRequest,
                 log.info(String.valueOf(response.getStatus()));
                 if (response.getStatus() == HttpStatus.NO_CONTENT.value()) {
                     return new DeleteUserByIdResponse(requestData.getId());
+                } else {
+                    throw new BaseException(CommonErrorCode.KEYCLOAK_OPERATION_ERROR);
                 }
             }
         }
-        return null;
     }
 }

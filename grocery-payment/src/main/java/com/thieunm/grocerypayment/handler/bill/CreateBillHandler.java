@@ -89,6 +89,7 @@ public class CreateBillHandler extends CommandHandler<CreateBillRequest, CreateB
                     .status(BillStatus.PAID)
                     .totalPrice(billTotalPrice)
                     .pickUpTime(getPickUpTime(requestData))
+                    .stripePaymentId(requestData.getPaymentIntentId())
                     .build();
             List<BillItem> billItemList = cartClientResponse.getInternalCartResponseList()
                     .stream()

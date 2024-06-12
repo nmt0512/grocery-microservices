@@ -36,6 +36,9 @@ public class Bill extends JpaAuditable<String> {
     @Enumerated(EnumType.STRING)
     private BillStatus status;
 
+    @Column(name = "stripe_payment_id")
+    private String stripePaymentId;
+
     @Column(name = "pick_up_time", nullable = false)
     private LocalDateTime pickUpTime;
 

@@ -5,6 +5,8 @@ import com.thieunm.groceryauth.dto.response.CreateUserResponse;
 import com.thieunm.groceryauth.dto.response.UserResponse;
 import com.thieunm.groceryauth.utils.KeycloakUtil;
 import com.thieunm.grocerybase.cqrs.command.CommandHandler;
+import com.thieunm.grocerybase.exception.BaseException;
+import com.thieunm.grocerybase.exception.CommonErrorCode;
 import com.thieunm.groceryutils.Mapper;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
@@ -63,9 +65,10 @@ public class CreateUserHandler extends CommandHandler<CreateUserRequest, CreateU
                     UserResponse userResponse = Mapper.map(createdUserRepresentation, UserResponse.class);
                     userResponse.setRealmRoles(requestData.getRealmRoles());
                     return new CreateUserResponse(userResponse);
+                } else {
+                    throw new BaseException(CommonErrorCode.KEYCLOAK_OPERATION_ERROR);
                 }
             }
         }
-        return null;
     }
 }

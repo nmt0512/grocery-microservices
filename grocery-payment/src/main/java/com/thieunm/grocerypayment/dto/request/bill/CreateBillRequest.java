@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CreateBillRequest extends CommandRequestData {
     private List<@Size(min = 36, max = 36) String> cartIdList;
+    private String paymentIntentId;
     private String pickUpDate;
     private String pickUpTime;
 }

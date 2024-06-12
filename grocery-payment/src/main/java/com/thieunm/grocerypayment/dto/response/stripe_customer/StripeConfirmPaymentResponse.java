@@ -11,7 +11,8 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 public class StripeConfirmPaymentResponse extends CommandResponseData {
-    private String paymentIntent;
+    private String paymentIntentId;
+    private String paymentIntentClientSecret;
     private String ephemeralKey;
     private String customer;
     private String publishableKey;

@@ -81,7 +81,8 @@ public class StripeConfirmPaymentHandler extends CommandHandler<StripeConfirmPay
 
         PaymentIntent paymentIntent = PaymentIntent.create(paymentIntentParams);
         return StripeConfirmPaymentResponse.builder()
-                .paymentIntent(paymentIntent.getClientSecret())
+                .paymentIntentId(paymentIntent.getId())
+                .paymentIntentClientSecret(paymentIntent.getClientSecret())
                 .ephemeralKey(ephemeralKey.getSecret())
                 .customer(stripeCustomerId)
                 .publishableKey(stripeProperties.getPublishableKey())
