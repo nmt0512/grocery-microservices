@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.thieunm</groupId>
 	<artifactId>grocery-cart</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>grocery-cart</name>
 	<description>grocery-cart</description>
 	<properties>
