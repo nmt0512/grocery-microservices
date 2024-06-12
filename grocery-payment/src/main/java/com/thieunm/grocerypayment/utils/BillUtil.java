@@ -58,7 +58,7 @@ public class BillUtil {
                                         .stream()
                                         .filter(product -> Objects.equals(product.getId(), billItem.getProductId()))
                                         .findFirst()
-                                        .get();
+                                        .orElse(new ProductResponse());
                                 return BillItemResponse.builder()
                                         .quantity(billItem.getQuantity())
                                         .price(billItem.getPrice())
