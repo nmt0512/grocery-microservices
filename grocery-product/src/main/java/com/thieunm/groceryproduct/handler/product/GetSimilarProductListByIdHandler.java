@@ -43,7 +43,11 @@ public class GetSimilarProductListByIdHandler extends QueryHandler<GetSimilarPro
                     requestProductCategoryId,
                     requestData.getId(),
                     querySize);
-            bestSellingProductList.addAll(addingProductList);
+            addingProductList.forEach(product -> {
+                if (!bestSellingProductList.contains(product)) {
+                    bestSellingProductList.add(product);
+                }
+            });
         }
         List<ProductResponse> productResponseList = bestSellingProductList
                 .stream()
