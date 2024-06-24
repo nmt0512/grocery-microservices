@@ -38,11 +38,6 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
 
-stripe:
-  version: ${STRIPE_VERSION:2023-10-16}
-  api-key: ${STRIPE_API_KEY:sk_test_51OMRX8Cqjm2Ob9Uw0snWeJlSrbRxXA1kz1ICJnu688GNYnYNFmJJFna52Ji7oejulOW0R7qxhR6xJZ3PlViQ11wu00Vm2Xabrb}
-  publishable-key: ${STRIPE_PUBLISHABLE_KEY:pk_test_51OMRX8Cqjm2Ob9UwwghwmRpeG1BLJSyPh9Clgi80F5sen4yBWswDbFsoK60ah7YfyXz5uZVAzR3beZkRh9pzVX8Y00kXvzKxSc}
-
 grocery:
   client-uri:
     grocery-cart: ${GROCERY_CART:http://grocery-cart/api/internal/cart}
