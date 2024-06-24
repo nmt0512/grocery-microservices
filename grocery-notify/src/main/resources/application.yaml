@@ -37,5 +37,5 @@ eureka:
 
 firebase:
   admin:
-    json-path: /grocery-ff691-firebase-adminsdk-wrjkj-88bb767797.json
+    json-path:
     app-name: grocery
