@@ -21,6 +21,7 @@
     <bytecodeTargetLevel>
       <module name="grocery-authorization" target="17" />
       <module name="grocery-bill" target="17" />
+      <module name="grocery-common" target="1.5" />
       <module name="grocery-security" target="17" />
     </bytecodeTargetLevel>
   </component>
