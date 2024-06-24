@@ -30,14 +30,6 @@ spring:
     topics:
       product: ${PRODUCT_TOPIC:com.grocery.send.product}
 
-cloudinary:
-  api-url: ${CLOUDINARY_URL:cloudinary://558427153628728:JMtTD8ZsLAlUILfUxULWSCLFmBg@dtcdff7yy}
-  product-url:
-    regex: https://res.cloudinary.com/dtcdff7yy/image/upload
-    resized-regex: https://res.cloudinary.com/dtcdff7yy/image/upload/c_fill,w_350,h_350
-  product-prefix-path: grocery/product
-  category-prefix-path: grocery/category
-
 eureka:
   client:
     serviceUrl:
