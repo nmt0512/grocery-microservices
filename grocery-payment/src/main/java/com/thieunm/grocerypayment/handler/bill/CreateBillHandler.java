@@ -30,6 +30,7 @@ import com.thieunm.groceryutils.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
@@ -55,7 +56,10 @@ public class CreateBillHandler extends CommandHandler<CreateBillRequest, CreateB
     private final ProductProducer productProducer;
 
     @Override
-    @Transactional
+    @Transactional(
+            rollbackFor = {CartClientException.class, ProductClientException.class, Exception.class},
+            propagation = Propagation.REQUIRED
+    )
     public CreateBillResponse handle(CreateBillRequest requestData) {
 
         DeleteAndGetCartByIdListClientResponse cartClientResponse = null;
@@ -113,14 +117,13 @@ public class CreateBillHandler extends CommandHandler<CreateBillRequest, CreateB
             BillResponse billResponse = Mapper.map(savedBill, BillResponse.class);
             billResponse.setBillItemResponseList(billItemResponseList);
             return new CreateBillResponse(billResponse);
-        } catch (CartClientException cartClientException) {
-            return null;
         } catch (ProductClientException productClientException) {
             cartProducer.sendRollbackRequestToCart(CartRollbackRequest.builder()
                     .internalCartResponseList(Objects
                             .requireNonNull(cartClientResponse)
                             .getInternalCartResponseList())
                     .build());
+            throw productClientException;
         } catch (Exception exception) {
             cartProducer.sendRollbackRequestToCart(CartRollbackRequest.builder()
                     .internalCartResponseList(Objects
@@ -132,10 +135,11 @@ public class CreateBillHandler extends CommandHandler<CreateBillRequest, CreateB
                             .requireNonNull(productClientResponse)
                             .getDeductingProductList())
                     .build());
+            throw exception;
         }
-        return null;
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     private LocalDateTime getPickUpTime(CreateBillRequest requestData) {
         int arrivalDay = Arrays.stream(PickUpDateEnum.values())
                 .filter(pickUpDateEnum -> pickUpDateEnum.getDescription().equals(requestData.getPickUpDate()))
@@ -152,6 +156,7 @@ public class CreateBillHandler extends CommandHandler<CreateBillRequest, CreateB
         return LocalDateTime.of(pickUpDate, pickUpTime);
     }
 
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     private void sendSocketNotification(Bill bill) {
         boolean isPickUpTimeToday = bill.getPickUpTime().toLocalDate().equals(LocalDate.now());
         if (isPickUpTimeToday) {
