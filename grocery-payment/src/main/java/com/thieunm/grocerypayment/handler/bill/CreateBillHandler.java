@@ -28,6 +28,7 @@ import com.thieunm.grocerypayment.repository.BillRepository;
 import com.thieunm.groceryutils.JsonWebTokenUtil;
 import com.thieunm.groceryutils.Mapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -157,6 +158,7 @@ public class CreateBillHandler extends CommandHandler<CreateBillRequest, CreateB
     }
 
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    @Async
     private void sendSocketNotification(Bill bill) {
         boolean isPickUpTimeToday = bill.getPickUpTime().toLocalDate().equals(LocalDate.now());
         if (isPickUpTimeToday) {
