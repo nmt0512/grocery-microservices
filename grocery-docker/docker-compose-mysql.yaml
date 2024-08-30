@@ -2,15 +2,15 @@ version: '3.2'
 
 services:
 
-  mysql-grocery-payment:
+  mysql:
     image: mysql:latest
     ports:
-      - 3000:3306
+      - 3306:3306
     restart: unless-stopped
     environment:
       MYSQL_USER: thieunm
       MYSQL_PASSWORD: nmtkma0550
-      MYSQL_DATABASE: grocery_payment
+      MYSQL_DATABASE: mysql-db
       MYSQL_ROOT_PASSWORD: nmtkma0550
     healthcheck:
       test: "exit 0"
