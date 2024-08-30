@@ -1,6 +1,5 @@
 package com.thieunm.grocerycart.entity;
 
-import com.thieunm.grocerybase.entity.MongoAuditable;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

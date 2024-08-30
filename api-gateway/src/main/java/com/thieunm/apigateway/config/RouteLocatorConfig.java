@@ -4,6 +4,8 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 
 @Configuration
 public class RouteLocatorConfig {
@@ -34,6 +36,15 @@ public class RouteLocatorConfig {
                                 "/api/bill/**", "/api/internal/bill/**",
                                 "/api/staff/bill/**",
                                 "/api/statistic/**")
+                        .filters(f -> f.retry(retryConfig -> retryConfig
+                                .setRetries(3)
+                                .setStatuses(HttpStatus.BAD_GATEWAY,
+                                        HttpStatus.GATEWAY_TIMEOUT,
+                                        HttpStatus.INTERNAL_SERVER_ERROR)
+                                .setMethods(HttpMethod.GET,
+                                        HttpMethod.POST,
+                                        HttpMethod.PUT,
+                                        HttpMethod.DELETE)))
                         .uri("lb://grocery-payment"))
                 .route("grocery-netty-socket", r -> r
                         .path("/socket.io/**")
