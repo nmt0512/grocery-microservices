@@ -6,20 +6,6 @@ spring:
     name: ${APP_NAME:grocery-auth}
   profiles:
     active: ${ENV:dev}
-  datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/grocery_auth
-    username: root
-    password: nmtkma0550
-    driverClassName: com.mysql.cj.jdbc.Driver
-  jpa:
-    show-sql: false
-    properties:
-      format_sql: true
-    hibernate:
-      ddl-auto: update
-      naming:
-        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   security:
     oauth2:
       client:

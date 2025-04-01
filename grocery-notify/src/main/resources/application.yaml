@@ -7,12 +7,12 @@ spring:
   profiles:
     active: ${ENV:dev}
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3000/grocery_notify
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/grocery_notify
     username: root
     password: nmtkma0550
     driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
-    show-sql: false
+    show-sql: true
     properties:
       format_sql: true
     hibernate:
@@ -30,6 +30,11 @@ spring:
     topics:
       notify: ${NOTIFY_TOPIC:com.grocery.send.notify}
 
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
 eureka:
   client:
     serviceUrl:
@@ -37,5 +42,5 @@ eureka:
 
 firebase:
   admin:
-    json-path:
+    json-path: /grocery-ff691-firebase-adminsdk-wrjkj-88bb767797.json
     app-name: grocery

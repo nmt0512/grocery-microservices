@@ -23,6 +23,11 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
 
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
 grocery:
   client-uri:
     grocery-product: ${GROCERY_PRODUCT:http://grocery-product/api/internal/product}

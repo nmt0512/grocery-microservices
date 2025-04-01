@@ -7,12 +7,12 @@ spring:
   profiles:
     active: ${ENV:dev}
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3000/grocery_payment
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/grocery_payment
     username: root
     password: nmtkma0550
     driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
-    show-sql: false
+    show-sql: true
     properties:
       format_sql: true
     hibernate:
@@ -32,6 +32,11 @@ spring:
       cart: ${CART_TOPIC:com.grocery.send.cart}
       product: ${PRODUCT_TOPIC:com.grocery.send.product}
       notify: ${NOTIFY_TOPIC:com.grocery.send.notify}
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 eureka:
   client:

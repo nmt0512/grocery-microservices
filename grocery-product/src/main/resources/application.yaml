@@ -12,7 +12,7 @@ spring:
     password: nmtkma0550
     driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
-    show-sql: false
+    show-sql: true
     properties:
       format_sql: true
     hibernate:
